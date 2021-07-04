@@ -7,7 +7,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 const config = (env, { mode }) => ({
   target: 'web',
   devtool: 'source-map',
-  entry: path.resolve(__dirname, './src/index.js'),
+  entry: path.resolve(__dirname, './src/index.jsx'),
   module: {
     rules: [
       {
@@ -34,7 +34,7 @@ const config = (env, { mode }) => ({
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new ESLintPlugin({
-      extensions: ['js'],
+      extensions: ['js', 'jsx'],
     }),
     new HtmlPlugin({
       template: path.resolve(__dirname, 'public', 'index.html'),
