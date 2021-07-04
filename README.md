@@ -1,6 +1,6 @@
 <h1 align="center">
 <img width="40" valign="bottom" src="https://ultimatecourses.com/static/icons/react.svg">
-React Router: Starter Project
+React Router 6
 </h1>
 <h4 align="center">Starter Project for the Ultimate Courses <a href="https://ultimatecourses.com/learn/react-router" target="_blank">React Router course</a>.</h4>
 
