@@ -9,6 +9,7 @@ import { css } from '@emotion/css';
 
 import { Products } from './Products';
 import { Admin } from './Admin';
+import { Nav } from './Common/Nav';
 
 const AppStyles = css`
   width: 380px;
@@ -27,6 +28,8 @@ export const App = () => {
     <div className={AppStyles}>
       <Router>
         <div className="Container">
+          <Nav />
+
           <Routes>
             <Route path="/" element={<Products />} />
             <Route path="/admin" element={<Admin />} />
