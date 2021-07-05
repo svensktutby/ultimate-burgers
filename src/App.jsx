@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,6 +10,7 @@ import { css } from '@emotion/css';
 import { Products } from './Products/Products';
 import { Admin } from './Admin/Admin';
 import { Nav } from './Common/Nav';
+import { ProtectedRoute } from './Common/ProtectedRoute';
 
 const appStyles = css`
   width: 380px;
@@ -24,6 +25,7 @@ const appStyles = css`
 `;
 
 export const App = () => {
+  const [authenticated] = useState(true);
   return (
     <div className={appStyles}>
       <Router>
@@ -31,8 +33,13 @@ export const App = () => {
           <Nav />
 
           <Routes>
-            <Route path="/products*" element={<Products />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/*" element={<Products />} />
+            <ProtectedRoute
+              path="/admin"
+              element={<Admin />}
+              authenticated={authenticated}
+              redirectTo="/"
+            />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
