@@ -7,15 +7,16 @@ import {
 } from 'react-router-dom';
 import { css } from '@emotion/css';
 
-import { Products } from './Products';
-import { Admin } from './Admin';
+import { Products } from './Products/Products';
+import { ProductsIndex } from './Products/ProductsIndex';
+import { Admin } from './Admin/Admin';
 import { Nav } from './Common/Nav';
 
-const AppStyles = css`
+const appStyles = css`
   width: 380px;
   margin: 50px auto;
 
-  .Container {
+  .container {
     padding: 25px;
     background-color: #1d1e26;
     border: 4px solid #9580ff;
@@ -25,13 +26,15 @@ const AppStyles = css`
 
 export const App = () => {
   return (
-    <div className={AppStyles}>
+    <div className={appStyles}>
       <Router>
-        <div className="Container">
+        <div className="container">
           <Nav />
 
           <Routes>
-            <Route path="/" element={<Products />} />
+            <Route path="/" element={<Products />}>
+              <Route path="/" element={<ProductsIndex />} />
+            </Route>
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>

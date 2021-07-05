@@ -1,11 +1,12 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { css } from '@emotion/css';
 
-const ProductsStyles = css`
+const productsStyles = css`
   display: flex;
   flex-direction: column;
 
-  .Logo {
+  .logo {
     width: 125px;
     max-width: 100%;
     height: auto;
@@ -15,15 +16,15 @@ const ProductsStyles = css`
 
 export const Products = () => {
   return (
-    <div className={ProductsStyles}>
+    <div className={productsStyles}>
       <img
-        className="Logo"
+        className="logo"
         src="/assets/img/logo.svg"
         width="125"
         height="45"
         alt="Ultimate Burgers"
       />
-      Products
+      <Outlet />
     </div>
   );
 };
