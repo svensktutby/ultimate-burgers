@@ -19,18 +19,18 @@ const productCardStyles = css`
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.035);
   }
 
-  .productCard {
-    &Icon {
+  .product-card {
+    &-icon {
       width: 40px;
       margin-right: 15px;
     }
 
-    &Name {
+    &-name {
       margin: 0;
       font-size: 1.2rem;
     }
 
-    &Price {
+    &-price {
       margin: 0;
       font-size: 1rem;
       color: #50fa7b;
@@ -41,13 +41,13 @@ const productCardStyles = css`
 export const ProductCard = ({ product }) => (
   <Link className={productCardStyles} to={product.id}>
     <img
-      className="productCardIcon"
+      className="product-card-icon"
       src={`/assets/img/products/${product.id}.svg`}
       alt={product.name}
     />
     <div>
-      <h2 className="productCardName">{product.name}</h2>
-      <p className="productCardPrice">{`$${product.price / 100}`}</p>
+      <h2 className="product-card-name">{product.name}</h2>
+      <p className="product-card-price">{`$${product.price / 100}`}</p>
     </div>
   </Link>
 );

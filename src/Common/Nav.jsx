@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { css } from '@emotion/css';
 
-const NavStyles = css`
+const navStyles = css`
   margin-bottom: 15px;
 
   a {
@@ -19,7 +19,7 @@ const NavStyles = css`
 `;
 
 export const Nav = () => (
-  <nav className={NavStyles}>
+  <nav className={navStyles}>
     <NavLink to="/" activeClassName="active" end>
       Products
     </NavLink>
