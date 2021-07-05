@@ -8,8 +8,6 @@ import {
 import { css } from '@emotion/css';
 
 import { Products } from './Products/Products';
-import { ProductsIndex } from './Products/ProductsIndex';
-import { Product } from './Products/Product';
 import { Admin } from './Admin/Admin';
 import { Nav } from './Common/Nav';
 
@@ -33,10 +31,7 @@ export const App = () => {
           <Nav />
 
           <Routes>
-            <Route path="/" element={<Products />}>
-              <Route path="/" element={<ProductsIndex />} />
-              <Route path=":id" element={<Product />} />
-            </Route>
+            <Route path="/products*" element={<Products />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>

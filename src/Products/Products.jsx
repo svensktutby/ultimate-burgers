@@ -1,6 +1,9 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { css } from '@emotion/css';
+
+import { ProductsIndex } from './ProductsIndex';
+import { Product } from './Product';
 
 const productsStyles = css`
   display: flex;
@@ -24,7 +27,10 @@ export const Products = () => {
         height="45"
         alt="Ultimate Burgers"
       />
-      <Outlet />
+      <Routes>
+        <Route path="/" element={<ProductsIndex />} />
+        <Route path=":id" element={<Product />} />
+      </Routes>
     </div>
   );
 };
