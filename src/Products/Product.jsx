@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { css } from '@emotion/css';
 
 import { retrieveProduct } from './ProductsService';
@@ -28,17 +28,35 @@ const productStyles = css`
       width: 50px;
       margin-right: 15px;
     }
+    &-button {
+      margin-right: 5px;
+      padding: 10px 15px;
+      border: 2px solid #50fa7b;
+      border-radius: 6px;
+      color: #50fa7b;
+      background: none;
+      outline: 0;
+      cursor: pointer;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
   }
 `;
 
 export const Product = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
     (async () => {
-      const data = await retrieveProduct(id);
-      setProduct(data);
+      try {
+        const data = await retrieveProduct(id);
+        setProduct(data);
+      } catch (e) {
+        console.warn(e);
+        navigate('/', { replace: true, state: { id } });
+      }
     })();
   }, [id]);
 
@@ -62,6 +80,15 @@ export const Product = () => {
 
       <div className="product-description">
         <p>{product.description}</p>
+        <button
+          className="product-button"
+          type="button"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          Back
+        </button>
       </div>
     </div>
   );
