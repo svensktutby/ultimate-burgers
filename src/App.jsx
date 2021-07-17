@@ -26,6 +26,7 @@ const appStyles = css`
 
 export const App = () => {
   const [authenticated] = useState(true);
+
   return (
     <div className={appStyles}>
       <Router>
@@ -35,7 +36,7 @@ export const App = () => {
           <Routes>
             <Route path="/*" element={<Products />} />
             <ProtectedRoute
-              path="/admin"
+              path="/admin*"
               element={<Admin />}
               authenticated={authenticated}
               redirectTo="/"
